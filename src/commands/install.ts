@@ -1,3 +1,4 @@
+import typer from '../utils/typer';
 import yargs from 'yargs';
 import chalk from 'chalk';
 import clipboard from 'clipboardy';
@@ -26,7 +27,7 @@ const installCommand: yargs.CommandModule = {
         console.log(chalk.bgBlack.italic(" >> 📋 Command copied to clipboard! Just paste it to initialize & install the stack!!"));
       } else if(args?.git) {
         console.log(chalk.bgBlack.italic(" >> 🛈 Tip: Use --copy OR -c to copy the command to clipboard."));
-        console.log(` npm init -y && npx tsc --init && ${iCmd} && git init && touch .gitignore && { echo "node_modules/"; echo "dist/"; echo ".env"; } > $_ `);
+        await typer(` npm init -y && npx tsc --init && ${iCmd} && git init && touch .gitignore && { echo "node_modules/"; echo "dist/"; echo ".env"; } > $_ `);
       } else if(args?.copy) {
         console.log(chalk.bgBlack.italic(" >> 🛈 Tip: Use --git OR -g to set up Git."));
         await clipboard.write(`npm init -y && npx tsc --init && ${iCmd}`);
@@ -34,7 +35,7 @@ const installCommand: yargs.CommandModule = {
       } else {
         console.log(chalk.bgBlack.italic(" >> 🛈 Tip: Use --copy OR -c to copy the command to clipboard."));
         console.log(chalk.bgBlack.italic(" >> 🛈 Tip: Use --git OR -g to set up Git."));
-        console.log(` npm init -y && npx tsc --init && ${iCmd}`);
+        await typer(` npm init -y && npx tsc --init && ${iCmd}`);
       }
     }catch(err){
       if(err instanceof Error){
