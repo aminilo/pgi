@@ -3,17 +3,19 @@ import { PackageInfo } from '../types';
 import typer from '../utils/typer';
 import chalk from 'chalk';
 import { Arguments } from 'yargs';
+import searchCheckbox from 'inquirer-search-checkbox';
 
 const { default: inquirer } = require("inquirer");
+inquirer.registerPrompt('search-checkbox', searchCheckbox);
 
 export async function installCommandHandler(args: Arguments, deps: { clipboardWrite: (text: string)=> Promise<void> }){
 	try{
 		const packages = PackageFactory.getAvailablePackages();
 		const { selected } = await inquirer.prompt([
 			{
-				type: "checkbox" as const,
+				type: "search-checkbox" as const,
 				name: "selected",
-				message: "Select packages:",
+				message: "Select packages (type to search):",
 				choices: packages.map(pkg => ({
 					name: pkg.label,
 					value: pkg
