@@ -11,10 +11,10 @@
     "serve": "ts-node src/cli.ts",
     "start": "node dist/cli.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["cli", "nodejs", "typescript", "inquirer", "yargs", "pgi"],
+  "author": "AmiNilo",
+  "license": "MIT",
+  "description": "A simple & interactive CLI tool to bootstrap NodeJS projects with favorite packages",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.2",
@@ -30,5 +30,13 @@
     "inquirer": "^12.6.0",
     "inquirer-search-checkbox": "^1.0.0",
     "yargs": "^17.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aminilo/pgi.git"
+  },
+  "homepage": "https://github.com/aminilo/pgi#readme",
+  "bugs": {
+    "url": "https://github.com/aminilo/pgi/issues"
   }
 }
